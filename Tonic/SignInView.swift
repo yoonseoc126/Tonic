@@ -1,7 +1,7 @@
 import SwiftUI
 import SafariServices
 
-struct ContentView: View {
+struct SignInView: View {
     @State private var showWebView = false
     @State private var showSignInWebView = false  // New state for sign in button
     
@@ -80,6 +80,6 @@ struct SafariView: UIViewControllerRepresentable {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SignInView()
     }
 }
