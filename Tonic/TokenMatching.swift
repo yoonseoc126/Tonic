@@ -38,10 +38,8 @@ func compareUserInterests(userId1: String, userId2: String, completion: @escapin
             // Determine the return value
             if commonCount < 3 {
                 completion(1)
-            } else if commonCount >= 3 && commonCount <= 10 {
-                completion(2)
             } else {
-                completion(3)
+                completion(2)
             }
         }
     }
