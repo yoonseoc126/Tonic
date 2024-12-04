@@ -8,6 +8,22 @@
 import SwiftUI
 import FirebaseCore
 
+<<<<<<< HEAD
+
+@main
+struct TonicApp: App {
+    init() {
+        // Configure Firebase only once
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            MapView()
+        }
+=======
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -27,6 +43,7 @@ struct TonicApp: App {
   var body: some Scene {
     WindowGroup {
         SignInView()
+>>>>>>> main
     }
   }
 }

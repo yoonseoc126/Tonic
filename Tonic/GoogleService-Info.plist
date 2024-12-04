@@ -2,6 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<<<<<<< HEAD
+=======
+>>>>>>> main
 	<key>API_KEY</key>
 	<string>AIzaSyByAp57rkRv9rMdgNapCnKWD9Zla66xpT8</string>
 	<key>GCM_SENDER_ID</key>
@@ -26,5 +29,8 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:453456068614:ios:4203b0f93d8cb82daec387</string>
+<<<<<<< HEAD
+=======
+>>>>>>> main
 </dict>
 </plist>
