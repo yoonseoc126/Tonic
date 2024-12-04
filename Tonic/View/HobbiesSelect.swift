@@ -10,6 +10,7 @@ import SwiftUI
 struct HobbiesSelect: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var tonicViewModel: TonicViewModel
+    @State private var navigateToNext = false
     @FocusState var showKeyboard: Bool
     @State private var firstName = ""
     @State private var lastName = ""
@@ -17,7 +18,7 @@ struct HobbiesSelect: View {
     @State private var customInterest = ""
     @State private var interests: Set<String> = []
     
-    private let interestOptions = ["Movies", "Cafes", "Soccer", "Camping"]
+    private let interestOptions = ["Movies", "Art", "Cafes", "Journaling", "Camping", "Photography", "Dance", "Singing", "Museums", "Crochet", "Soccer", "Basketball", "Bouldering", "Bowling", "Exercise", "Theatre", "Concerts", "Kpop", "K-R&B", "Rap", "Band", "EDM", "Documentaries", "K-drama", "Anime", "Horror", "True Crime", "Rom-com", "Thriller", "Fantasy", "Reality Shows", "Indie"]
     private let genderOptions = ["Male", "Female", "Non-Binary", "Prefer not to say"]
     private let minimumInterests = 5
     
@@ -34,116 +35,89 @@ struct HobbiesSelect: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Progress Bar
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 350, height: 10)
-                    .foregroundColor(Color(hex: "D9D9D9"))
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 260, height: 10, alignment: .leading)
-                    .frame(maxWidth: 350, maxHeight: 50, alignment: .leading)
-                    .foregroundColor(Color(hex: "9372FF"))
-            }
-            .position(x: 195, y: 0)
-            .frame(height: 70)
-            .padding(.top, 20)
-            
-            // Header
-            Text("List Your Interests")
-                .font(.system(size: 35, weight: .semibold))
-                .frame(maxWidth: 350, alignment: .leading)
-                .frame(height: 20)
-            
-            Text("Choose/Enter at least \(minimumInterests) tokens!")
-                .frame(maxWidth: 350, alignment: .leading)
-                .frame(height: 50)
-            
-            // Custom Interest Input
-            HStack {
-                TextField("Enter an interest...", text: $customInterest)
-                    .padding()
-                    .focused($showKeyboard)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.3))
-                            )
-                    )
-
-                
-                Button(action: addCustomInterest) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(Color(hex: "FC8F21"))
+        NavigationStack {
+            VStack(spacing: 0) {
+                // Progress Bar
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(width: 350, height: 10)
+                        .foregroundColor(Color(hex: "D9D9D9"))
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(width: 210, height: 10, alignment: .leading)
+                        .frame(maxWidth: 350, maxHeight: 50, alignment: .leading)
+                        .foregroundColor(Color(hex: "9372FF"))
                 }
-                .disabled(customInterest.isEmpty)
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 40)
-            
-            // Selected Interests
-            ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
-                    if !interests.isEmpty {
-//                        Text("Selected Interests")
-//                            .font(.headline)
-//                            .padding(.horizontal)
+                .position(x: 195, y: 0)
+                .frame(height: 70)
+                .padding(.top, 20)
+                
+                // Header
+                Text("List Your Interests")
+                    .font(.system(size: 35, weight: .semibold))
+                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(height: 20)
+                
+                Text("Choose at least 5 tokens!")
+                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(height: 50)
+                
+                // Selected Interests
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        if !interests.isEmpty {
+                            //                        Text("Selected Interests")
+                            //                            .font(.headline)
+                            //                            .padding(.horizontal)
+                            
+                            FlowLayout(spacing: 8) {
+                                ForEach(Array(interests), id: \.self) { interest in
+                                    InterestToken(hobby: interest, isSelected: true)
+                                        .onTapGesture {
+                                            interests.remove(interest)
+                                        }
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                        
+                        //                    Text("Suggested Interests")
+                        //                        .font(.headline)
+                        //                        .padding(.horizontal)
                         
                         FlowLayout(spacing: 8) {
-                            ForEach(Array(interests), id: \.self) { interest in
-                                InterestToken(hobby: interest, isSelected: true)
+                            ForEach(interestOptions.filter { !interests.contains($0) }, id: \.self) { interest in
+                                InterestToken(hobby: interest, isSelected: false)
                                     .onTapGesture {
-                                        interests.remove(interest)
+                                        interests.insert(interest)
                                     }
                             }
                         }
                         .padding(.horizontal)
                     }
-                    
-//                    Text("Suggested Interests")
-//                        .font(.headline)
-//                        .padding(.horizontal)
-                    
-                    FlowLayout(spacing: 8) {
-                        ForEach(interestOptions.filter { !interests.contains($0) }, id: \.self) { interest in
-                            InterestToken(hobby: interest, isSelected: false)
-                                .onTapGesture {
-                                    interests.insert(interest)
-                                }
-                        }
+                }
+                
+                // Next Button
+                Button {
+                    navigateToNext = true
+                } label: {
+                    HStack {
+                        Spacer()
+                        Image("NextButton")
+                            .resizable()
+                            .frame(width: 45, height: 45)
+                            .padding(30)
                     }
-                    .padding(.horizontal)
                 }
-            }
-            
-            // Next Button
-            HStack {
                 Spacer()
-                Button(action: {
-                    // Handle next action
-                }) {
-                    Image("NextButton")
-                        .resizable()
-                        .frame(width: 45, height: 45)
-                }
-                .disabled(interests.count < minimumInterests)
-                .padding(30)
+            }
+            .backgroundStyle(Color(hex: "FFF8F0"))
+            .task {
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                showKeyboard = true
             }
         }
-        .backgroundStyle(Color(hex: "FFF8F0"))
-        .task {
-            try? await Task.sleep(nanoseconds: 500_000_000)
-            showKeyboard = true
-        }
-    }
-    
-    private func addCustomInterest() {
-        let trimmed = customInterest.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !trimmed.isEmpty {
-            interests.insert(trimmed)
-            customInterest = ""
+        .navigationDestination(isPresented: $navigateToNext) {
+            IntroduceScreenThree()
         }
     }
 }

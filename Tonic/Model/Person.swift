@@ -15,10 +15,11 @@ struct Person: Identifiable, Hashable{
     let birthday: String
     let bio: String
     let username: String
-    let location: [Float]
+    let location: [Double]
     let interests: [String]
+    let friends: [String]
     
-    init(id: UUID,firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Float], interests: [String]) {
+    init(id: UUID,firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Double], interests: [String], friends: [String]) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -28,9 +29,10 @@ struct Person: Identifiable, Hashable{
         self.username = username
         self.location = location
         self.interests = interests
+        self.friends = friends
     }
     
-    init(firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location:[Float], interests: [String]) {
+    init(firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location:[Double], interests: [String], friends: [String]) {
         id = UUID()
         self.firstName = firstName
         self.lastName = lastName
@@ -40,5 +42,6 @@ struct Person: Identifiable, Hashable{
         self.username = username
         self.location = location
         self.interests = interests
+        self.friends = friends
     }
 }

@@ -11,7 +11,6 @@ class TonicViewModel: ObservableObject {
     
     static let shared = TonicViewModel()
     
-    // could have initialized up here, but nice to keep declaration short and separate
     @Published var users: [Person]
     @Published var currentIndex = 0
     
@@ -19,37 +18,32 @@ class TonicViewModel: ObservableObject {
         users[currentIndex]
     }
     
-    init(){
+    init() {
         users = [
-            Person(firstName: "Esther", lastName: "Kim", gender: "female", birthday: "07/27/2005", bio: "Hi, I'm Esther, Nice to meet you!", username: "esther5727", location: [1.012, 2.012], interests: ["anime", "camping", "karaoke"]),
-            Person(firstName: "Stephen", lastName: "Kim", gender: "male", birthday: "06/27/1998", bio: "Hi, I'm Stephen, I'm stinky", username: "stephen1234", location: [1.012, 2.012], interests: ["anime", "coffee", "karaoke"])
+            Person(firstName: "Esther", lastName: "Kim", gender: "female", birthday: "07/27/2005", bio: "Hi, I'm Esther, Nice to meet you! I'm a sophomore at USC studying at IYA and I'd love to find new friends that have similar interests and hobbies.", username: "esther5727", location: [34.040000, -118.292230], interests: ["anime", "camping", "karaoke", "k-drama", "k-pop"], friends: ["renaewang", "philipkeem"]),
+            Person(firstName: "Stephen", lastName: "Kim", gender: "male", birthday: "06/27/1998", bio: "Hi, I'm Stephen, I'm stinky", username: "stephen1234", location: [34.022350, -118.285118], interests: ["anime", "coffee", "karaoke"], friends: ["philipkeem"])
         ]
-        
-        // CRUD - create, read, update, delete
-        func create(firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Float], interests: [String]) {
-            let user = Person(firstName: firstName, lastName: lastName, gender: gender, birthday: birthday, bio: bio, username: username, location: location, interests: interests)
-            users.append(user)
+    }
+    
+    // CRUD methods
+    func create(firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Double], interests: [String], friends: [String]) {
+        let user = Person(firstName: firstName, lastName: lastName, gender: gender, birthday: birthday, bio: bio, username: username, location: location, interests: interests, friends: friends)
+        users.append(user)
+    }
+    
+    func update(user: Person, at index: Int) {
+        if index >= users.count || index < 0 {
+            return
         }
         
-        func update(user: Person, at index: Int) {
-            // Defensive Programming
-            // Early return pattern
-            // Validation and protecting against bad input
-            if index >= users.count || index < 0{
-                return
-            }
-            
-            users[index] = user
+        users[index] = user
+    }
+    
+    func remove(at index: Int) {
+        if index >= users.count || index < 0 {
+            return
         }
         
-        // allows for more intuitive accessing with keyword at
-        func remove(at index: Int) {
-            if index >= users.count || index < 0{
-                return
-            }
-            
-            users.remove(at: index)
-        }
+        users.remove(at: index)
     }
 }
-    
