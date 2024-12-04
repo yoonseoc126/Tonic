@@ -36,7 +36,7 @@ func compareUserInterests(userId1: String, userId2: String, completion: @escapin
             let commonCount = commonInterests.count
             
             // Determine the return value
-            if commonCount < 3 {
+            if commonCount <= 5 {
                 completion(1)
             } else {
                 completion(2)
