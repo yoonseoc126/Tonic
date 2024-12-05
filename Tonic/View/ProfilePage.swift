@@ -276,6 +276,13 @@ struct ProfilePage: View {
             }
             .padding(.top, 50)
             .ignoresSafeArea()
+            
+            NavigationLink(
+                destination: MessagingView(),
+                isActive: $navigateToMessage
+            ) {
+                EmptyView()
+            }
         }
         .navigationDestination(isPresented: $navigateToMessage) {
             MessageScreen()
