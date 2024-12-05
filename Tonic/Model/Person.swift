@@ -8,7 +8,7 @@
 import Foundation
 
 struct Person: Identifiable, Hashable{
-    let id: UUID
+    let id: Int
     let firstName: String
     let lastName: String
     let gender: String
@@ -19,21 +19,8 @@ struct Person: Identifiable, Hashable{
     let interests: [String]
     let friends: [String]
     
-    init(id: UUID,firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Double], interests: [String], friends: [String]) {
+    init(id: Int, firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location: [Double], interests: [String], friends: [String]) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.gender = gender
-        self.birthday = birthday
-        self.bio = bio
-        self.username = username
-        self.location = location
-        self.interests = interests
-        self.friends = friends
-    }
-    
-    init(firstName: String, lastName: String, gender: String, birthday: String, bio: String, username: String, location:[Double], interests: [String], friends: [String]) {
-        id = UUID()
         self.firstName = firstName
         self.lastName = lastName
         self.gender = gender
