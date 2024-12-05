@@ -110,7 +110,8 @@ struct IntroduceScreenThree: View {
             }
             .padding(.horizontal, 20)
             
-            NavigationLink(destination: MapDiscovery(user: tonicViewModel.currentUser)) {
+            NavigationLink(destination:         MapDiscovery(user: Person(id:1, firstName: "Esther", lastName: "Kim", gender: "female", birthday: "07/27/2005", bio: "Hi, I'm Esther, Nice to meet you! I'm a sophomore at USC studying at IYA and I'd love to find new friends that have similar interests and hobbies.", username: "esther5727", location: [34.040000, -118.292230], interests: ["anime", "camping", "karaoke", "k-drama", "k-pop"], friends: ["renaewang", "philipkeem"]))
+                .environmentObject(TonicViewModel.shared)) {
                 HStack {
                     Spacer()
                     Image("NextButton")
