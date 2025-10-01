@@ -4,6 +4,11 @@ Tonic is a social media app that is actually meant to be social!
 Think Tinder, but for friends. Unlike regular social media apps that are meant to glue people to their phones and be as addictive as possible, Tonic pushes people to meet other people within their local community in-person with a map of users' locations, a friend recommendation tool that matches interests, and a private messaging feature between friends. Users can now achieve what truly matters: *creating embodied, deeply meaningful, and intimate relationships*. 
 ## Why Tonic?
 The number one thing that people say they regret not doing enough is being around the people they love because humans are fundamentally social people. Tonic empowers people to fulfill this need by connecting people based not on superficial metrics such as likes and follower number, but on humanizing characteristics such as one’s personality, interests, and hobbies!
+### Built With
+- ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
+- ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+- ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+
 
 ## Video Demo
 https://github.com/user-attachments/assets/ac90255f-9950-4fd4-84b7-53975592387c
