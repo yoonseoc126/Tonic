@@ -8,10 +8,12 @@ The number one thing that people say they regret not doing enough is being aroun
 - ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
 - ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 - ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+<img width="3472" height="3092" alt="wireframes" src="https://github.com/user-attachments/assets/1cd6f439-2e40-412d-a843-7ca687905ab2" />
 
 
 ## Video Demo
 https://github.com/user-attachments/assets/ac90255f-9950-4fd4-84b7-53975592387c
+
 
 ## Guide to Running the App
 1. Clone the repository to your local environment
